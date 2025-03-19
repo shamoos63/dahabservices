@@ -26,7 +26,7 @@
     <div id="viewport" class="l-viewport">
       <div class="l-wrapper">
         <header class="header">
-          <a class="header--logo" href="#0">
+          <a class="header--logo" href="#intro">
             <img src="assets/img/logo.png" alt="Dahab Services">
             <p>Dahab Services</p>
           </a>
@@ -44,19 +44,14 @@
             <li><span>قم ببدأ العمل معنا</span></li>
           </ul>
         </nav>
-        <div class="language-buttons">
-          <a href="index_en.html">
-              <img src="assets/img/en.png" alt="Switch to English" title="English">
-          </a>
-          <a href="index.html">
-              <img src="assets/img/ar.png" alt="Switch to Arabic" title="Arabic">
-          </a> 
-      </div>
-        <ul class="l-main-content main-content">
+                <ul class="l-main-content main-content">
           <li class="l-section section section--is-active">
-            <div class="intro">
+            <div class="intro" id="intro">
+          <div class=responsive-image >
+                <img src="assets/img/introduction-visual.png" alt="Welcome" id="dynamic-img">
+              </div>
               <div class="intro--banner">
-                <p style="font-family:Jannat; font-size: 60px; margin-top: 80px;">
+                <p style="font-family:Jannat; font-size: 60px; margin-top: 40px;">
                   قم بدفع عملك<br>إلى مستوى آخر</p>
                 <button class="cta">!ابدأ التعامل معنا
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
@@ -66,7 +61,6 @@
                   </svg>
                   <span class="btn-background"></span>
                 </button>
-                <img src="assets/img/introduction-visual.png" alt="Welcome">
               </div>
             </div>
           </li>
@@ -143,15 +137,18 @@
           </li>
           <li class="l-section section">
             <div class="about">
-              <div class="about--banner">
-                <p style="font-size: 60px;">لكل مشكلة كبيرة <br> فكرة حل أكبر</p>
-                <a href="#0">من نحن وماذا نعمل؟
-                  
+              <div class="about--banner" style="z-index: 10;">   
+                <p style="font-size: 60px; margin-top: 12%; z-index: 10;">لكل مشكلة كبيرة <br> فكرة حل أكبر</p>
+                <a href="">من نحن وماذا نعمل؟
                 </a>
-                <img src="assets/img/about-visual.png" alt="About Us">
+              </div>
+              <div class="responsive-image">
+                <img src="assets/img/about-visual.png" alt="About Us" id="dynamic-img2">
               </div>
                 </div>
+                
           </li>
+          
           <li class="l-section section">
             <div class="contact">
               <div class="contact--lockup">
@@ -274,23 +271,7 @@
     e.preventDefault();
     submitMessage.style.display = 'block';
 
-    const serviceMap = {
-      'Web design': '✔️',
-      'Graphic design': '✔️',
-      'Printing Services': '✔️',
-      'Social Media': '✔️',
-      'Delivery': '✔️',
-      'Photography': '✔️'
-    };
-  
-
-    const selectedServices = Array.from(form.querySelectorAll('input[name="serviceType"]:checked'))
-      .map(input => serviceMap[input.value] || '');
-
     const formData = new FormData(form);
-    formData.delete('serviceType');
-    selectedServices.forEach(service => formData.append('serviceType', service));
-
     fetch(scriptURL, { method: 'POST', body: formData })
       .then(response => {
         successMessage.style.display = 'block';
@@ -304,7 +285,8 @@
         submitMessage.style.display = 'none';
       });
   });
-</script> 
+</script>
+
 
             </div>
           </li>
